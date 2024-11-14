@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Add additional ignore list
+Debug/
+Drivers/
+.settings/
+.vs/
