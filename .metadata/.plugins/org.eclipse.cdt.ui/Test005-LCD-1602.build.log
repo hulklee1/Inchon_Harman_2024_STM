@@ -1,0 +1,73 @@
+14:45:44 **** Incremental Build of configuration Debug for project Test005-LCD-1602 ****
+make -j24 all 
+arm-none-eabi-gcc "C:/Users/user/source/repos/STM32/myLib/lcd1602.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd1602.d" -MT"Core/Src/lcd1602.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd1602.o"
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'i2c_scan':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:21:26: warning: 'return' with no value, in function returning non-void [-Wreturn-type]
+   21 |         if(hi2c == NULL) return;
+      |                          ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:19:5: note: declared here
+   19 | int i2c_scan()
+      |     ^~~~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:26:25: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   26 |                         printf("  %02x ", addr);
+      |                         ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:9:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    8 | #include "main.h"
+  +++ |+#include <stdio.h>
+    9 | 
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:26:25: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   26 |                         printf("  %02x ", addr);
+      |                         ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:26:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:30:25: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   30 |                         printf("  .  ");
+      |                         ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:30:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:32:38: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   32 |                 if((addr % 16) == 0) printf("\r\n");
+      |                                      ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:32:38: note: include '<stdio.h>' or provide a declaration of 'printf'
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'lcd_command':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:47:49: warning: pointer targets in passing argument 3 of 'HAL_I2C_Master_Transmit' differ in signedness [-Wpointer-sign]
+   47 |         HAL_I2C_Master_Transmit(hi2c, I2C_ADDR, dd, 4, 10);
+      |                                                 ^~
+      |                                                 |
+      |                                                 char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:363,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/lcd1602.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:566:98: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  566 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                         ~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'lcd_data':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:60:49: warning: pointer targets in passing argument 3 of 'HAL_I2C_Master_Transmit' differ in signedness [-Wpointer-sign]
+   60 |         HAL_I2C_Master_Transmit(hi2c, I2C_ADDR, dd, 4, 10);
+      |                                                 ^~
+      |                                                 |
+      |                                                 char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:363,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/lcd1602.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:566:98: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  566 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                         ~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'i2c_init':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:18:1: warning: control reaches end of non-void function [-Wreturn-type]
+   18 | }
+      | ^
+arm-none-eabi-gcc -o "Test005-LCD-1602.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test005-LCD-1602\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test005-LCD-1602.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test005-LCD-1602.elf
+ 
+arm-none-eabi-size  Test005-LCD-1602.elf 
+arm-none-eabi-objdump -h -S Test005-LCD-1602.elf  > "Test005-LCD-1602.list"
+   text	   data	    bss	    dec	    hex	filename
+  17756	    112	   2064	  19932	   4ddc	Test005-LCD-1602.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test005-LCD-1602.list
+ 
+
+14:45:45 Build Finished. 0 errors, 8 warnings. (took 587ms)
+

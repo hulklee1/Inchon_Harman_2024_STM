@@ -5,7 +5,7 @@
  *      Author: user
  */
 #include "main.h"
-
+//#include "C:\Users\user\STM32Cube\Repository\STM32Cube_FW_F4_V1.28.1\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h"
 extern UART_HandleTypeDef huart2;
 
 //int __io_getchar(void){}

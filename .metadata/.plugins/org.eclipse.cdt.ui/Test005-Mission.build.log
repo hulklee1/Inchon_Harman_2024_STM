@@ -1,0 +1,16 @@
+16:48:38 **** Incremental Build of configuration Debug for project Test005-Mission ****
+make -j24 all 
+arm-none-eabi-gcc -o "Test005-Mission.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test005-Mission\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test005-Mission.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test005-Mission.elf
+ 
+arm-none-eabi-size  Test005-Mission.elf 
+arm-none-eabi-objdump -h -S Test005-Mission.elf  > "Test005-Mission.list"
+   text	   data	    bss	    dec	    hex	filename
+  41712	    476	   2308	  44496	   add0	Test005-Mission.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test005-Mission.list
+ 
+
+16:48:38 Build Finished. 0 errors, 0 warnings. (took 539ms)
+
