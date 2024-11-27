@@ -77,3 +77,20 @@ void lcd_printEx(char *str, int ln)
 	if(ln == 1) lcd_command(0xc0);
 	lcd_print(str);
 }
+int ln2 = 0;	// current line no.
+char sBuf[20];	// 2nd line string.
+void lcd_printEx2(char *str)
+{
+	if(ln2 == 0)
+	{
+		lcd_command(0x80); ln2++; //return;
+	}
+	else if(ln2 == 1)
+	{
+		lcd_command(0x80); lcd_print(sBuf);	// Line 1
+
+		lcd_command(0xc0);
+		strcpy(sBuf, str); //return;
+	}
+	lcd_print(str);
+}

@@ -94,18 +94,28 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   ProgramStart("LCD (1602)");
-  i2c_init(&hi2c1);
+  i2c_init(&hi2c2);
   i2c_scan();
 
   lcd_init();
-  lcd_print("Hello");
-  lcd_printEx("Good afternoon", 1);
+  lcd_print("Hello ");
+  lcd_print("Good afternoon");
+  int i;
+  printf("Scanf test. Input any number : ");
+  scanf("%d", &i);
+  printf("Input number = %d\r\n", i);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  char buf[20];
   while (1)
   {
+	  printf("Scanf test. Input any number : ");
+	  scanf("%d", &i);
+	  sprintf(buf,"Input number:%d", i);
+	  lcd_printEx2(buf);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

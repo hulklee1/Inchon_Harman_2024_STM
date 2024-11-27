@@ -1,10 +1,24 @@
-14:37:49 **** Incremental Build of configuration Debug for project Test003-UART ****
+12:03:47 **** Incremental Build of configuration Debug for project Test003-UART ****
 make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:93:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+   93 |   ProgramStart("UART");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:98:7: warning: unused variable 'count' [-Wunused-variable]
+   98 |   int count = 0;
+      |       ^~~~~
+arm-none-eabi-gcc -o "Test003-UART.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test003-UART\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test003-UART.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test003-UART.elf
+ 
 arm-none-eabi-size  Test003-UART.elf 
+arm-none-eabi-objdump -h -S Test003-UART.elf  > "Test003-UART.list"
    text	   data	    bss	    dec	    hex	filename
-  31600	    476	   1980	  34056	   8508	Test003-UART.elf
+  34964	    476	   1980	  37420	   922c	Test003-UART.elf
 Finished building: default.size.stdout
  
+Finished building: Test003-UART.list
+ 
 
-14:37:49 Build Finished. 0 errors, 0 warnings. (took 233ms)
+12:03:48 Build Finished. 0 errors, 2 warnings. (took 752ms)
 
