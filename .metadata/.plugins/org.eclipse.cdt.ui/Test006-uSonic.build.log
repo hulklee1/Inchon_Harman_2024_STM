@@ -1,0 +1,32 @@
+14:45:48 **** Incremental Build of configuration Debug for project Test006-uSonic ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I"C:/Users/user/source/repos/STM32/myLib" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:96:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+   96 |   ProgramStart("Ultra Sonic SR-04(SRF-05)");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:107:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  107 |         printf("Distance : %f\r\n", dist);
+      |         ^~~~~~
+../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   21 | #include "uSonic.h"
+  +++ |+#include <stdio.h>
+   22 | /* Private includes ----------------------------------------------------------*/
+../Core/Src/main.c:107:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  107 |         printf("Distance : %f\r\n", dist);
+      |         ^~~~~~
+../Core/Src/main.c:107:9: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test006-uSonic.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test006-uSonic\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test006-uSonic.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test006-uSonic.elf
+ 
+arm-none-eabi-size  Test006-uSonic.elf 
+arm-none-eabi-objdump -h -S Test006-uSonic.elf  > "Test006-uSonic.list"
+   text	   data	    bss	    dec	    hex	filename
+  34432	    476	   2052	  36960	   9060	Test006-uSonic.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test006-uSonic.list
+ 
+
+14:45:48 Build Finished. 0 errors, 3 warnings. (took 747ms)
+

@@ -1,8 +1,15 @@
+MemberFilterActionGroup.COutlineViewer.1=true
 MemberFilterActionGroup.COutlineViewer.16=true
 MemberFilterActionGroup.COutlineViewer.2=true
+MemberFilterActionGroup.COutlineViewer.4=true
 eclipse.preferences.version=1
+org.eclipse.cdt.ui.editor.linkToEditor=true
 org.eclipse.cdt.ui.text.templates.custom=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
-scalability.numberOfLines=7600
+scalability.contentAssistAutoActivation=true
+scalability.numberOfLines=8000
+scalability.parserBasedContentAssist=true
+scalability.semanticHighlight=true
+scalability.syntaxColor=true
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

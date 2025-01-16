@@ -1,48 +1,5 @@
-14:40:38 **** Incremental Build of configuration Debug for project Test005-LCD-1602 ****
+14:45:46 **** Build of configuration Debug for project Test005-LCD-1602 ****
 make -j24 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:96:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
-   96 |   ProgramStart("LCD (1602)");
-      |   ^~~~~~~~~~~~
-../Core/Src/main.c:97:3: warning: implicit declaration of function 'i2c_init' [-Wimplicit-function-declaration]
-   97 |   i2c_init(&hi2c2);
-      |   ^~~~~~~~
-../Core/Src/main.c:98:3: warning: implicit declaration of function 'i2c_scan' [-Wimplicit-function-declaration]
-   98 |   i2c_scan();
-      |   ^~~~~~~~
-../Core/Src/main.c:100:3: warning: implicit declaration of function 'lcd_init' [-Wimplicit-function-declaration]
-  100 |   lcd_init();
-      |   ^~~~~~~~
-../Core/Src/main.c:101:3: warning: implicit declaration of function 'lcd_print' [-Wimplicit-function-declaration]
-  101 |   lcd_print("Hello ");
-      |   ^~~~~~~~~
-../Core/Src/main.c:104:3: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  104 |   printf("Scanf test. Input any number : ");
-      |   ^~~~~~
-../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-   20 | #include "main.h"
-  +++ |+#include <stdio.h>
-   21 | 
-../Core/Src/main.c:104:3: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
-  104 |   printf("Scanf test. Input any number : ");
-      |   ^~~~~~
-../Core/Src/main.c:104:3: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/main.c:105:3: warning: implicit declaration of function 'scanf' [-Wimplicit-function-declaration]
-  105 |   scanf("%d", &i);
-      |   ^~~~~
-../Core/Src/main.c:105:3: note: include '<stdio.h>' or provide a declaration of 'scanf'
-../Core/Src/main.c:105:3: warning: incompatible implicit declaration of built-in function 'scanf' [-Wbuiltin-declaration-mismatch]
-../Core/Src/main.c:105:3: note: include '<stdio.h>' or provide a declaration of 'scanf'
-../Core/Src/main.c:116:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  116 |           sprintf(buf,"Input number:%d", i);
-      |           ^~~~~~~
-../Core/Src/main.c:116:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c:116:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-../Core/Src/main.c:116:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c:117:11: warning: implicit declaration of function 'lcd_printEx2' [-Wimplicit-function-declaration]
-  117 |           lcd_printEx2(buf);
-      |           ^~~~~~~~~~~~
 arm-none-eabi-gcc -o "Test005-LCD-1602.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test005-LCD-1602\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test005-LCD-1602.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Test005-LCD-1602.elf
  
@@ -55,5 +12,5 @@ Finished building: default.size.stdout
 Finished building: Test005-LCD-1602.list
  
 
-14:40:39 Build Finished. 0 errors, 12 warnings. (took 696ms)
+14:45:47 Build Finished. 0 errors, 0 warnings. (took 657ms)
 

@@ -1,16 +1,156 @@
-16:48:38 **** Incremental Build of configuration Debug for project Test005-Mission ****
+14:45:47 **** Build of configuration Debug for project Test005-Mission ****
 make -j24 all 
+arm-none-eabi-gcc "C:/Users/user/source/repos/STM32/myLib/lcd1602.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd1602.d" -MT"Core/Src/lcd1602.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd1602.o"
+arm-none-eabi-gcc "C:/Users/user/source/repos/STM32/myLib/myLib.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/myLib.d" -MT"Core/Src/myLib.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/myLib.o"
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'i2c_scan':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:21:26: warning: 'return' with no value, in function returning non-void [-Wreturn-type]
+   21 |         if(hi2c == NULL) return;
+      |                          ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:19:5: note: declared here
+   19 | int i2c_scan()
+      |     ^~~~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:26:25: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   26 |                         printf("  %02x ", addr);
+      |                         ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:9:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    8 | #include "main.h"
+  +++ |+#include <stdio.h>
+    9 | 
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:26:25: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   26 |                         printf("  %02x ", addr);
+      |                         ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:26:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:30:25: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   30 |                         printf("  .  ");
+      |                         ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:30:25: note: include '<stdio.h>' or provide a declaration of 'printf'
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:32:38: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   32 |                 if((addr % 16) == 0) printf("\r\n");
+      |                                      ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:32:38: note: include '<stdio.h>' or provide a declaration of 'printf'
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'lcd_command':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:47:49: warning: pointer targets in passing argument 3 of 'HAL_I2C_Master_Transmit' differ in signedness [-Wpointer-sign]
+   47 |         HAL_I2C_Master_Transmit(hi2c, I2C_ADDR, dd, 4, 10);
+      |                                                 ^~
+      |                                                 |
+      |                                                 char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:363,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/lcd1602.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:566:98: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  566 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                         ~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'lcd_data':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:60:49: warning: pointer targets in passing argument 3 of 'HAL_I2C_Master_Transmit' differ in signedness [-Wpointer-sign]
+   60 |         HAL_I2C_Master_Transmit(hi2c, I2C_ADDR, dd, 4, 10);
+      |                                                 ^~
+      |                                                 |
+      |                                                 char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:363,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/lcd1602.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:566:98: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  566 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                         ~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'lcd_printEx2':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:93:17: warning: implicit declaration of function 'strcpy' [-Wimplicit-function-declaration]
+   93 |                 strcpy(sBuf, str); //return;
+      |                 ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:9:1: note: include '<string.h>' or provide a declaration of 'strcpy'
+    8 | #include "main.h"
+  +++ |+#include <string.h>
+    9 | 
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:93:17: warning: incompatible implicit declaration of built-in function 'strcpy' [-Wbuiltin-declaration-mismatch]
+   93 |                 strcpy(sBuf, str); //return;
+      |                 ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:93:17: note: include '<string.h>' or provide a declaration of 'strcpy'
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c: In function 'i2c_init':
+C:/Users/user/source/repos/STM32/myLib/lcd1602.c:18:1: warning: control reaches end of non-void function [-Wreturn-type]
+   18 | }
+      | ^
+C:/Users/user/source/repos/STM32/myLib/myLib.c: In function '__io_getchar':
+C:/Users/user/source/repos/STM32/myLib/myLib.c:15:41: warning: pointer targets in passing argument 2 of 'HAL_UART_Receive' differ in signedness [-Wpointer-sign]
+   15 |         while(HAL_UART_Receive(&huart2, &ch, 1, 10) != HAL_OK);
+      |                                         ^~~
+      |                                         |
+      |                                         char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/myLib.c:7:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:746:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  746 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c:16:36: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   16 |         HAL_UART_Transmit(&huart2, &ch, 1, 10); // echo
+      |                                    ^~~
+      |                                    |
+      |                                    char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/myLib.c:7:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c:17:51: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   17 |         if(ch == '\r') HAL_UART_Transmit(&huart2, "\n", 1, 10);
+      |                                                   ^~~~
+      |                                                   |
+      |                                                   char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/myLib.c:7:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c: In function '__io_putchar':
+C:/Users/user/source/repos/STM32/myLib/myLib.c:24:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   24 |         HAL_UART_Transmit(&huart2, &ch, 1, 10);
+      |                                    ^~~
+      |                                    |
+      |                                    int *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from C:/Users/user/source/repos/STM32/myLib/myLib.c:7:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'int *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c: In function 'ProgramStart':
+C:/Users/user/source/repos/STM32/myLib/myLib.c:34:9: warning: implicit declaration of function 'cls' [-Wimplicit-function-declaration]
+   34 |         cls();
+      |         ^~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c:35:9: warning: implicit declaration of function 'Cursor' [-Wimplicit-function-declaration]
+   35 |         Cursor(0,0);
+      |         ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c: At top level:
+C:/Users/user/source/repos/STM32/myLib/myLib.c:41:6: warning: conflicting types for 'cls'; have 'void()'
+   41 | void cls()
+      |      ^~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c:34:9: note: previous implicit declaration of 'cls' with type 'void()'
+   34 |         cls();
+      |         ^~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c:45:6: warning: conflicting types for 'Cursor'; have 'void(int,  int)'
+   45 | void Cursor(int x, int y)
+      |      ^~~~~~
+C:/Users/user/source/repos/STM32/myLib/myLib.c:35:9: note: previous implicit declaration of 'Cursor' with type 'void(int,  int)'
+   35 |         Cursor(0,0);
+      |         ^~~~~~
 arm-none-eabi-gcc -o "Test005-Mission.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test005-Mission\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test005-Mission.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Test005-Mission.elf
  
 arm-none-eabi-size  Test005-Mission.elf 
 arm-none-eabi-objdump -h -S Test005-Mission.elf  > "Test005-Mission.list"
    text	   data	    bss	    dec	    hex	filename
-  41712	    476	   2308	  44496	   add0	Test005-Mission.elf
+  42456	    476	   2308	  45240	   b0b8	Test005-Mission.elf
 Finished building: default.size.stdout
  
 Finished building: Test005-Mission.list
  
 
-16:48:38 Build Finished. 0 errors, 0 warnings. (took 539ms)
+14:45:48 Build Finished. 0 errors, 18 warnings. (took 847ms)
 

@@ -125,7 +125,7 @@ int main(void)
   {
 	  if(GetBuffer(bb) > 0)
 		  printf("Received Data : %s\r\n", bb);
-	  HAL_Delay(10a00);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
