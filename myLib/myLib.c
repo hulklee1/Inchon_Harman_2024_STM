@@ -16,7 +16,6 @@ int __io_getchar(void)
 	HAL_UART_Transmit(&huart2, &ch, 1, 10);	// echo
 	if(ch == '\r') HAL_UART_Transmit(&huart2, "\n", 1, 10);
 	return ch;
-
 }
 
 int __io_putchar(int ch)
