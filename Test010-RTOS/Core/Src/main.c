@@ -45,6 +45,9 @@ UART_HandleTypeDef huart2;
 
 osThreadId myTask01Handle;
 osThreadId myTask02Handle;
+osThreadId myTask03Handle;
+osThreadId myTask04Handle;
+osSemaphoreId myBinarySem01Handle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -55,6 +58,8 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 void myStartTask01(void const * argument);
 void myStartTask02(void const * argument);
+void StartTask03(void const * argument);
+void StartTask04(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -65,8 +70,9 @@ void myStartTask02(void const * argument);
 int bn = 0, mode = 0, t1 = 0; // mode : 1 button prerssed    0 release
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	mode = 1; t1 = 0;
-	bn++;
+	osSemaphoreRelease(myBinarySem01Handle);
+	//mode = 1; t1 = 0;
+	//bn++;
 }
 
 void LD2Test()
@@ -143,6 +149,11 @@ int main(void)
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
+  /* Create the semaphores(s) */
+  /* definition and creation of myBinarySem01 */
+  osSemaphoreDef(myBinarySem01);
+  myBinarySem01Handle = osSemaphoreCreate(osSemaphore(myBinarySem01), 1);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
@@ -161,12 +172,21 @@ int main(void)
   myTask01Handle = osThreadCreate(osThread(myTask01), NULL);
 
   /* definition and creation of myTask02 */
-  osThreadDef(myTask02, myStartTask02, osPriorityIdle, 0, 128);
+  osThreadDef(myTask02, myStartTask02, osPriorityBelowNormal, 0, 128);
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
+
+  /* definition and creation of myTask03 */
+  osThreadDef(myTask03, StartTask03, osPriorityLow, 0, 128);
+  myTask03Handle = osThreadCreate(osThread(myTask03), NULL);
+
+  /* definition and creation of myTask04 */
+  osThreadDef(myTask04, StartTask04, osPriorityIdle, 0, 128);
+  myTask04Handle = osThreadCreate(osThread(myTask04), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   ProgramStart("RTOS test.....");
+  osSemaphoreRelease(myBinarySem01Handle);
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -336,11 +356,17 @@ void myStartTask01(void const * argument)
   int n1=0;
   for(;;)
   {
-	  LD2Test();
-	  Cursor(0,0);
-	  printf("LD2 flashed %d times(Task_1)  ",n1++);
+	  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+	  {
+		  printf("Task 01 (Normal) --------------------------\r\n"); HAL_Delay(100);
+		  osSemaphoreRelease(myBinarySem01Handle);
+	  }
+	 // LD2Test();
+	 // Cursor(0,0);
+	 // printf("LD2 flashed %d times(Task_1)  ",n1++);
 	  //HAL_Delay(500);
-      osDelay(500); // Task ?��?��
+     // osDelay(500); // Task ?��?��
+      osDelay(1);
   }
   /* USER CODE END 5 */
 }
@@ -360,7 +386,7 @@ void myStartTask02(void const * argument)
   int n = 0;
   for(;;)
   {
-	  int d; // degree angle
+	/*  int d; // degree angle
 	  Cursor(0,10);
 	  //for(int i=1;i<=256;i++) step_wave(i);
 	  if(mode)
@@ -370,14 +396,64 @@ void myStartTask02(void const * argument)
 		  if(++t1 > 256) { t1 = 0; mode = 0; }
 	  }
 	  else
-		  printf("                                       ");
+		  printf("                                       "); */
 	  //printf("Input Degree : "); scanf("%d", &d);
 	  //int step = 4096 * d / 360;
 	  //printf("Wave(Full) : %d steps,  Half : %d steps", step/2, step);
-
-      osDelay(5);
+	  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+	  {
+		  printf("Task 02 (BelowNormal) ---------------------\r\n"); HAL_Delay(50);
+		  osSemaphoreRelease(myBinarySem01Handle);
+	  }
+      osDelay(1);
   }
   /* USER CODE END myStartTask02 */
+}
+
+/* USER CODE BEGIN Header_StartTask03 */
+/**
+* @brief Function implementing the myTask03 thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask03 */
+void StartTask03(void const * argument)
+{
+  /* USER CODE BEGIN StartTask03 */
+  /* Infinite loop */
+  for(;;)
+  {
+	  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+	  {
+		  printf("Task 03 (Low) ----------------\r\n"); HAL_Delay(20);
+		  osSemaphoreRelease(myBinarySem01Handle);
+	  }
+	  osDelay(1);
+  }
+  /* USER CODE END StartTask03 */
+}
+
+/* USER CODE BEGIN Header_StartTask04 */
+/**
+* @brief Function implementing the myTask04 thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask04 */
+void StartTask04(void const * argument)
+{
+  /* USER CODE BEGIN StartTask04 */
+  /* Infinite loop */
+  for(;;)
+  {
+	  if(osSemaphoreWait(myBinarySem01Handle, 0) == osOK)
+	  {
+		  printf("Task 04 (Idle) -----------\r\n"); HAL_Delay(10);
+		  //osSemaphoreRelease(myBinarySem01Handle);
+	  }
+	  osDelay(1);
+  }
+  /* USER CODE END StartTask04 */
 }
 
 /**
