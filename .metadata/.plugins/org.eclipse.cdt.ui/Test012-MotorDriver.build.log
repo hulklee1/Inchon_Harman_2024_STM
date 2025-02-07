@@ -1,0 +1,16 @@
+16:36:46 **** Incremental Build of configuration Debug for project Test012-MotorDriver ****
+make -j24 all 
+arm-none-eabi-gcc -o "Test012-MotorDriver.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test012-MotorDriver\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test012-MotorDriver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test012-MotorDriver.elf
+ 
+arm-none-eabi-size  Test012-MotorDriver.elf 
+arm-none-eabi-objdump -h -S Test012-MotorDriver.elf  > "Test012-MotorDriver.list"
+   text	   data	    bss	    dec	    hex	filename
+  18524	    112	   2048	  20684	   50cc	Test012-MotorDriver.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test012-MotorDriver.list
+ 
+
+16:36:47 Build Finished. 0 errors, 0 warnings. (took 554ms)
+
