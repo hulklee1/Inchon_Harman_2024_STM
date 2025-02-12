@@ -1,0 +1,44 @@
+15:12:44 **** Incremental Build of configuration Debug for project Test005-I2C-Xiro ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:128:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  128 |   ProgramStart("I2C Test - 6500 Xiro");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:134:3: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  134 |   printf("WHO_AM_I regi value(%02x) : %02x\r\n", MPU6050, check1);
+      |   ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:134:3: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  134 |   printf("WHO_AM_I regi value(%02x) : %02x\r\n", MPU6050, check1);
+      |   ^~~~~~
+../Core/Src/main.c:134:3: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:136:3: warning: implicit declaration of function 'i2c_init' [-Wimplicit-function-declaration]
+  136 |   i2c_init(&hi2c1);
+      |   ^~~~~~~~
+../Core/Src/main.c:137:3: warning: implicit declaration of function 'i2c_scan' [-Wimplicit-function-declaration]
+  137 |   i2c_scan();
+      |   ^~~~~~~~
+../Core/Src/main.c:139:3: warning: implicit declaration of function 'lcd_init' [-Wimplicit-function-declaration]
+  139 |   lcd_init();
+      |   ^~~~~~~~
+../Core/Src/main.c:140:3: warning: implicit declaration of function 'lcd_print' [-Wimplicit-function-declaration]
+  140 |   lcd_print("Hello ");
+      |   ^~~~~~~~~
+arm-none-eabi-gcc -o "Test005-I2C-Xiro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test005-I2C-Xiro\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test005-I2C-Xiro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test005-I2C-Xiro.elf
+ 
+arm-none-eabi-size  Test005-I2C-Xiro.elf 
+arm-none-eabi-objdump -h -S Test005-I2C-Xiro.elf  > "Test005-I2C-Xiro.list"
+   text	   data	    bss	    dec	    hex	filename
+  39544	    480	   2120	  42144	   a4a0	Test005-I2C-Xiro.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test005-I2C-Xiro.list
+ 
+
+15:12:45 Build Finished. 0 errors, 7 warnings. (took 874ms)
+
